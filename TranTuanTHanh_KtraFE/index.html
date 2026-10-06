@@ -1,0 +1,855 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TenSV_KtraFE - Trang chủ Tiki</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5fa;
+            color: #27272a;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .top-banner {
+            background-color: #ffe885;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            font-weight: 500;
+            color: #1a1600;
+        }
+
+            .top-banner span {
+                color: #00ab56;
+                font-weight: 700;
+            }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ebebf0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-text {
+            color: #005aab;
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-sub {
+            color: #0d5cb6;
+            font-size: 11px;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 650px;
+            position: relative;
+        }
+
+        .search-input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid #dddde3;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+            .search-input-group i {
+                color: #808089;
+                padding-left: 12px;
+            }
+
+            .search-input-group input {
+                border: none;
+                outline: none;
+                padding: 10px 12px;
+                width: 100%;
+                font-size: 14px;
+            }
+
+        .search-btn {
+            background-color: #0b74e5;
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .quick-keywords {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+            font-size: 12px;
+            color: #808089;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 13px;
+        }
+
+        .header-action-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #808089;
+            cursor: pointer;
+        }
+
+            .header-action-item i {
+                font-size: 20px;
+                color: #0b74e5;
+            }
+
+        .cart-item {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background-color: #ff424e;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 1px 6px;
+        }
+
+        .sub-header {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 6px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #38383d;
+            border-top: 1px solid #f2f2f2;
+        }
+
+        .guarantees {
+            display: flex;
+            gap: 16px;
+        }
+
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+            .guarantee-item i {
+                color: #0b74e5;
+            }
+
+        .main-wrapper {
+            max-width: 1280px;
+            margin: 16px auto;
+            display: flex;
+            gap: 16px;
+            padding: 0 16px;
+        }
+
+        .sidebar {
+            width: 230px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 12px;
+            flex-shrink: 0;
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #27272a;
+        }
+
+        .category-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .category-item a {
+            font-size: 13px;
+            color: #38383d;
+            display: block;
+            padding: 6px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+            .category-item a:hover {
+                background-color: #f5f5fa;
+                color: #0b74e5;
+            }
+
+        .sponsor-card {
+            margin-top: 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .sponsor-tag {
+            font-size: 10px;
+            color: #808089;
+            text-align: right;
+            margin-bottom: 4px;
+        }
+
+        .sponsor-img {
+            width: 100%;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .sponsor-price {
+            color: #ff424e;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .content-area {
+            flex: 1;
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+            color: #808089;
+            margin-bottom: 12px;
+        }
+
+            .breadcrumb a {
+                color: #38383d;
+            }
+
+        .category-header {
+            background: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .banner-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .banner-main, .banner-side {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .banner-main img, .banner-side img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+        .category-icons {
+            background: #fff;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            width: 90px;
+        }
+
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 20px;
+            background: #f0f8ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0b74e5;
+            font-size: 22px;
+        }
+
+        .icon-title {
+            font-size: 12px;
+            color: #38383d;
+            font-weight: 400;
+        }
+
+        .filter-bar {
+            background: #fff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .filter-label {
+            font-weight: 500;
+            color: #808089;
+            font-size: 13px;
+        }
+
+        .filter-chip {
+            padding: 6px 12px;
+            background: #f5f5fa;
+            border: 1px solid #dddde3;
+            border-radius: 16px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+            .filter-chip.active {
+                background: #e6f1fe;
+                border-color: #0b74e5;
+                color: #0b74e5;
+                font-weight: 500;
+            }
+
+        .product-section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+            .product-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+                border-color: #e5e5e5;
+            }
+
+        .product-img-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; 
+            margin-bottom: 8px;
+        }
+
+            .product-img-wrapper img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+        .product-badges {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .badge-xtra {
+            background-color: #1a94ff;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+
+        .badge-fast {
+            background-color: #ffb800;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+
+        .product-title {
+            font-size: 13px;
+            line-height: 1.4;
+            color: #27272a;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 6px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            color: #808089;
+            margin-bottom: 6px;
+        }
+
+        .stars {
+            color: #ffb800;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ff424e;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .discount-tag {
+            font-size: 12px;
+            color: #ff424e;
+            background: #fff0f1;
+            padding: 1px 4px;
+            border-radius: 2px;
+            font-weight: 500;
+        }
+
+        .product-footer-text {
+            font-size: 11px;
+            color: #808089;
+            margin-top: 6px;
+            border-top: 1px solid #f5f5fa;
+            padding-top: 6px;
+        }
+
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">
+        Freeship đơn từ 45k, giảm thêm khi dùng <span>FREESHIP XTRA</span>
+    </div>
+
+    <header>
+        <div class="header-container">
+           
+            <div class="logo-box">
+                <a href="#" class="logo-text">TIKI</a>
+                <span class="logo-sub">Tốt & Nhanh</span>
+            </div>
+ 
+            <div class="search-box">
+                <div class="search-input-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Điện thoại, máy tính bảng, phụ kiện...">
+                    <button class="search-btn">Tìm kiếm</button>
+                </div>
+                <div class="quick-keywords">
+                    <span>điện thoại smartphone</span>
+                    <span>máy tính bảng</span>
+                    <span>iphone 16</span>
+                    <span>oppo a57</span>
+                </div>
+            </div>
+
+   
+            <div class="header-actions">
+                <div class="header-action-item">
+                    <i class="fas fa-home"></i>
+                    <span>Trang chủ</span>
+                </div>
+                <div class="header-action-item">
+                    <i class="far fa-user"></i>
+                    <span>Tài khoản</span>
+                </div>
+                <div class="header-action-item cart-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+
+  
+        <div class="sub-header">
+            <div class="guarantees">
+                <div class="guarantee-item"><i class="fas fa-check-circle"></i> Cam kết 100% hàng thật</div>
+                <div class="guarantee-item"><i class="fas fa-undo"></i> Hoàn 200% nếu hàng giả</div>
+                <div class="guarantee-item"><i class="fas fa-shield-alt"></i> 30 ngày đổi trả</div>
+                <div class="guarantee-item"><i class="fas fa-shipping-fast"></i> Giao nhanh 2h</div>
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt" style="color: #0b74e5;"></i> Giao đến: <b>Q. 1, P. Bến Nghé, Hồ Chí Minh</b>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="main-wrapper">
+
+        <aside class="sidebar">
+            <h3 class="sidebar-title">Khám phá theo danh mục</h3>
+            <ul class="category-list">
+                <li class="category-item"><a href="#">Điện thoại Smartphone</a></li>
+                <li class="category-item"><a href="#">Máy tính bảng</a></li>
+                <li class="category-item"><a href="#">Máy đọc sách</a></li>
+                <li class="category-item"><a href="#">Điện thoại phổ thông</a></li>
+                <li class="category-item"><a href="#">Điện thoại bàn</a></li>
+            </ul>
+
+          
+            <div class="sponsor-card">
+                <div class="sponsor-tag">Tài trợ</div>
+                <img src="https://cdn.mobilecity.vn/mobilecity-vn/images/2024/09/iphone-16-pro-max-titan-sa-mac.jpg" alt="iPhone Pro Max" class="sponsor-img">
+                <p style="font-size: 12px; margin-top: 6px;">Apple iPhone 16 Pro Max - Titan Tự Nhiên</p>
+                <div class="sponsor-price">40.990.000 ₫</div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-tag">Tài trợ</div>
+                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-duo-01.jpg" alt="iPhone Duo" class="sponsor-img">
+                <p style="font-size: 12px; margin-top: 6px;">iPhone Duo</p>
+                <div class="sponsor-price">64.990.000 ₫</div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-tag">Tài trợ</div>
+                <img src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/42/370982/iphone-18-pro-max-do-burgundy-1-639246098159595347.jpg" alt="iPhone 18 Pro Max" class="sponsor-img">
+                <p style="font-size: 12px; margin-top: 6px;">iPhone 18 Pro Max  -  Đỏ Burgundy</p>
+                <div class="sponsor-price">64.990.000 ₫</div>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-tag">Tài trợ</div>
+                <img src="https://cdn.mobilecity.vn/mobilecity-vn/images/2026/09/xiaomi-18-pro-max-xanh-duong.jpg" alt="Xiaomi 18 Pro Mã" class="sponsor-img">
+                <p style="font-size: 12px; margin-top: 6px;">Xiaomi 18 Pro Max - Tím Galaxy </p>
+                <div class="sponsor-price">27.250.000 ₫</div>
+            </div>
+
+
+        </aside>
+
+        
+
+
+        
+        <main class="content-area">
+
+           
+            <div class="breadcrumb">
+                <a href="#">Trang chủ</a> &gt; <span>Điện Thoại - Máy Tính Bảng</span>
+            </div>
+
+            
+            <div class="category-header">
+                Điện Thoại - Máy Tính Bảng
+            </div>
+         
+            <div class="banner-grid">
+                <div class="banner-main">
+                    <img src="https://images.unsplash.com/photo-1616469829941-c7200edec809?w=800" alt="Banner iPhone 16">
+                </div>
+                <div class="banner-side">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400" alt="Banner Sale Dưới 5 Triệu">
+                </div>
+            </div>
+
+            <div class="category-icons">
+                <div class="icon-item">
+                    <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+                    <span class="icon-title">Điện thoại Smartphone</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box"><i class="fas fa-tablet-alt"></i></div>
+                    <span class="icon-title">Máy tính bảng</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box"><i class="fas fa-book-open"></i></div>
+                    <span class="icon-title">Máy đọc sách</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box"><i class="fas fa-phone"></i></div>
+                    <span class="icon-title">Điện thoại phổ thông</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box"><i class="fas fa-phone-office"></i></div>
+                    <span class="icon-title">Điện thoại bàn</span>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <span class="filter-label">Tất cả sản phẩm</span>
+                <div class="filter-chip active">ROM</div>
+                <div class="filter-chip">128GB</div>
+                <div class="filter-chip">256GB</div>
+                <div class="filter-chip">Thương hiệu <i class="fas fa-chevron-down"></i></div>
+                <div class="filter-chip">Samsung</div>
+                <div class="filter-chip">Xiaomi</div>
+                <div class="filter-chip">OPPO</div>
+                <div class="filter-chip">Giá <i class="fas fa-chevron-down"></i></div>
+            </div>
+
+           
+            <h3 class="product-section-title">Danh sách sản phẩm</h3>
+            <div class="product-grid">
+
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://cdn.mobilecity.vn/mobilecity-vn/images/2024/09/iphone-16-pro-max-titan-sa-mac.jpg" alt="iPhone 16 Pro Max">
+                    </div>
+                    <div>
+                        <div class="product-badges">
+                            <span class="badge-xtra">XTRA</span>
+                            <span class="badge-fast">GIAO 2H</span>
+                        </div>
+                        <div class="product-title">Apple iPhone 16 Pro Max - 256GB Titan Tự Nhiên</div>
+                        <div class="product-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            <span>(48)</span>
+                        </div>
+                        <div class="product-price">
+                            40.990.000 ₫
+                        </div>
+                    </div>
+                    <div class="product-footer-text">Giao siêu tốc 2h</div>
+                </div>
+
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://cdn.mobilecity.vn/mobilecity-vn/images/2024/09/iphone-16-pro-old-titan-trang.jpg.webp" alt="iPhone 16 Pro">
+                    </div>
+                    <div>
+                        <div class="product-badges">
+                            <span class="badge-xtra">XTRA</span>
+                        </div>
+                        <div class="product-title">Apple iPhone 16 Pro - 128GB Sa Mạc Titan</div>
+                        <div class="product-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            <span>(102)</span>
+                        </div>
+                        <div class="product-price">
+                            31.990.000 ₫
+                        </div>
+                    </div>
+                    <div class="product-footer-text">2 Màu sắc | 2 Dung lượng</div>
+                </div>
+
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://cdn.mobilecity.vn/mobilecity-vn/images/2024/09/iphone-16-xanh-mong-ket.jpg.webp" alt="iPhone 16">
+                    </div>
+                    <div>
+                        <div class="product-badges">
+                            <span class="badge-xtra">XTRA</span>
+                            <span class="badge-fast">GIAO 2H</span>
+                        </div>
+                        <div class="product-title">Apple iPhone 16 - Xanh Mộng Kết - 256GB</div>
+                        <div class="product-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                            <span>(15)</span>
+                        </div>
+                        <div class="product-price">
+                            25.490.000 ₫ <span class="discount-tag">-2%</span>
+                        </div>
+                    </div>
+                    <div class="product-footer-text">5 Màu sắc | 2 Dung lượng</div>
+                </div>
+
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://cdn.mobilecity.vn/mobilecity-vn/images/2026/09/xiaomi-18-pro-max-xanh-duong.jpg" alt="Xiaomi 18 Pro Max">
+                    </div>
+                    <div>
+                        <div class="product-badges">
+                            <span class="badge-xtra">XTRA</span>
+                            <span class="badge-fast">GIAO 2H</span>
+                        </div>
+                        <div class="product-title">Xiaomi 18 Pro Max - Tím Galaxy 256GB</div>
+                        <div class="product-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                            <span>(15)</span>
+                        </div>
+                        <div class="product-price">
+                            27.250.000 ₫ <span class="discount-tag">-2%</span>
+                        </div>
+                    </div>
+                    <div class="product-footer-text">5 Màu sắc | 2 Dung lượng</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-duo-01.jpg" alt="Iphone DUO">
+                    </div>
+                    <div>
+                        <div class="product-badges">
+                            <span class="badge-xtra">XTRA</span>
+                            <span class="badge-fast">GIAO 2H</span>
+                        </div>
+                        <div class="product-title">Iphone Duo 256GB</div>
+                        <div class="product-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                            <span>(15)</span>
+                        </div>
+                        <div class="product-price">
+                            64.990.000 ₫ <span class="discount-tag">-2%</span>
+                        </div>
+                    </div>
+                    <div class="product-footer-text">5 Màu sắc | 2 Dung lượng</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://cdn.mobilecity.vn/mobilecity-vn/images/2025/12/honor-win-rt-pin-10000mah-111-1-den.jpg" alt="Honor WIN RT">
+                    </div>
+                    <div>
+                        <div class="product-badges">
+                            <span class="badge-xtra">XTRA</span>
+                            <span class="badge-fast">GIAO 2H</span>
+                        </div>
+                        <div class="product-title">Honor WIN RT 256GB</div>
+                        <div class="product-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                            <span>(15)</span>
+                        </div>
+                        <div class="product-price">
+                            13.350.000 ₫ <span class="discount-tag">-2%</span>
+                        </div>
+                    </div>
+                    <div class="product-footer-text">2 Màu sắc | 2 Dung lượng</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://cdn.mobilecity.vn/mobilecity-vn/images/2025/12/honor-win-xanh-mobilecity.jpg" alt="Honor WIN">
+                    </div>
+                    <div>
+                        <div class="product-badges">
+                            <span class="badge-xtra">XTRA</span>
+                            <span class="badge-fast">GIAO 2H</span>
+                        </div>
+                        <div class="product-title">Honor WIN RT 256GB</div>
+                        <div class="product-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                            <span>(15)</span>
+                        </div>
+                        <div class="product-price">
+                            16.450.000 ₫ <span class="discount-tag">-2%</span>
+                        </div>
+                    </div>
+                    <div class="product-footer-text">2 Màu sắc | 2 Dung lượng</div>
+                </div>
+
+
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://cdn.mobilecity.vn/mobilecity-vn/images/2024/09/iphone-16-plus-trang.jpg.webp" alt="iPhone 16 Plus">
+                    </div>
+                    <div>
+                        <div class="product-badges">
+                            <span class="badge-fast">GIAO 2H</span>
+                        </div>
+                        <div class="product-title">Apple iPhone 16 Plus - 128GB Trắng</div>
+                        <div class="product-rating">
+                            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            <span>(30)</span>
+                        </div>
+                        <div class="product-price">
+                            25.990.000 ₫
+                        </div>
+                    </div>
+                    <div class="product-footer-text">3 Màu sắc | 2 Dung lượng</div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

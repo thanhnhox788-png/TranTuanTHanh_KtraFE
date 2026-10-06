@@ -1,0 +1,139 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f5f5fa;
+    padding: 20px;
+}
+
+.category-header {
+    background-color: #fff;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+}
+
+    .category-header h2 {
+        font-size: 20px;
+        color: #27272a;
+        font-weight: bold;
+    }
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.product-card {
+    background-color: #fff;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ebebf0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+
+.product-img {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+    .product-img img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+.badge-group {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    min-height: 18px;
+}
+
+.badge {
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.badge-xtra {
+    background-color: #e5f7ed;
+    color: #00ab56;
+    border: 0.5px solid #00ab56;
+}
+
+.badge-chinhhang {
+    background-color: #0052cc;
+    color: #ffffff;
+}
+
+.p-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff424e;
+}
+
+    .p-price sup {
+        font-size: 11px;
+    }
+
+    .p-price small {
+        font-size: 11px;
+        color: #ff424e;
+        background-color: #fff0f1;
+        padding: 1px 4px;
+        border-radius: 2px;
+        margin-left: 4px;
+    }
+
+.p-brand {
+    font-size: 11px;
+    font-weight: bold;
+    color: #808089;
+    text-transform: uppercase;
+}
+
+.p-title {
+    font-size: 13px;
+    color: #27272a;
+    line-height: 1.4;
+    height: 36px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.stars {
+    font-size: 11px;
+    color: #fdd835;
+}
+
+    .stars span {
+        color: #808089;
+        margin-left: 4px;
+    }
+
+.delivery-tag {
+    font-size: 11px;
+    color: #ff424e;
+    border-top: 1px solid #f2f2f2;
+    padding-top: 8px;
+    margin-top: auto;
+}
